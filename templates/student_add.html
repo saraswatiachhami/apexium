@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Add Student</h2>
+
+<form method="post" action="{% url 'student_add' %}">
+  {% csrf_token %}
+
+  <label for="full_name">Full Name:</label><br>
+  <input type="text" name="full_name" id="full_name" required><br><br>
+
+  <label for="email">Email:</label><br>
+  <input type="email" name="email" id="email" required><br><br>
+
+  <label for="course">Course:</label><br>
+  <select name="course" id="course" required>
+    <option value="">Select Course</option>
+    {% for course in courses %}
+      <option value="{{ course.id }}">{{ course.name }}</option>
+    {% endfor %}
+  </select><br><br>
+
+  <button type="submit">Add Student</button>
+</form>
+
+{% if messages %}
+  <ul>
+    {% for message in messages %}
+      <li>{{ message }}</li>
+    {% endfor %}
+  </ul>
+{% endif %}
+
+{% endblock %}

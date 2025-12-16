@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Apexiums Management System</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial;
+            background: #f5fff5;
+        }
+
+        .sidebar {
+            width: 220px;
+            height: 100vh;
+            background: green;
+            position: fixed;
+            padding-top: 20px;
+        }
+
+        .sidebar a {
+            display: block;
+            padding: 15px;
+            color: white;
+            text-decoration: none;
+        }
+
+        .sidebar a.active {
+            font-weight: bold;
+            background: darkgreen;
+        }
+
+        .sidebar a:hover {
+            background: #0b6e0b;
+        }
+
+        .content {
+            margin-left: 240px;
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="sidebar">
+    <a href="{% url 'dashboard' %}" class="{% if request.path == '/dashboard/' %}active{% endif %}">
+        Dashboard
+    </a>
+
+    <a href="{% url 'collaboration' %}" class="{% if 'collaboration' in request.path %}active{% endif %}">
+        Collaboration
+    </a>
+
+    <a href="{% url 'student_list' %}" class="{% if 'students' in request.path %}active{% endif %}">
+        Students
+    </a>
+
+    <a href="{% url 'staff_list' %}" class="{% if 'staff' in request.path %}active{% endif %}">
+        Staff
+    </a>
+
+    <a href="{% url 'instructor_list' %}" class="{% if 'instructors' in request.path %}active{% endif %}">
+        Instructor
+    </a>
+
+    <a href="{% url 'course_list' %}" class="{% if 'courses' in request.path %}active{% endif %}">
+        Courses
+    </a>
+
+    <!-- <a href="{% url 'instructor_list' %}">Instructors</a> -->
+
+</div>
+
+<div class="content">
+    {% block content %}
+    {% endblock %}
+</div>
+
+</body>
+</html>

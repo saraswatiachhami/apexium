@@ -1,0 +1,29 @@
+body {
+    margin: 0;
+    font-family: Arial;
+}
+
+.sidebar {
+    width: 220px;
+    height: 100vh;
+    background: green;
+    position: fixed;
+}
+
+.sidebar a {
+    display: block;
+    color: white;
+    padding: 15px;
+    text-decoration: none;
+}
+
+.sidebar a:hover,
+.sidebar .active {
+    font-weight: bold;
+    background: darkgreen;
+}
+
+.content {
+    margin-left: 230px;
+    padding: 20px;
+}

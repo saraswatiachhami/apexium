@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>OTP Verification</title>
+    <style>
+        body { font-family: Arial; background: #f5fff5; }
+        .box {
+            width: 300px; margin: 100px auto; padding: 25px;
+            background: white; border-radius: 8px;
+            text-align: center;
+        }
+        h3 { color: green; }
+        input, button {
+            width: 100%; padding: 10px; margin-top: 10px;
+        }
+        button { background: green; color: white; border: none; }
+    </style>
+</head>
+<body>
+
+<div class="box">
+    <h3>Email OTP Verification</h3>
+
+    <form method="post">
+        {% csrf_token %}
+        <input type="text" name="otp" placeholder="Enter OTP" required>
+        <button type="submit">Verify</button>
+    </form>
+</div>
+
+</body>
+</html>

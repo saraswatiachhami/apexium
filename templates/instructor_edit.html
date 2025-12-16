@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Edit Instructor</h2>
+
+<form method="post" action="{% url 'instructor_edit' instructor.id %}">
+  {% csrf_token %}
+  <label>Full Name:</label><br>
+  <input type="text" name="full_name" value="{{ instructor.full_name }}" required><br><br>
+
+  <label>Email:</label><br>
+  <input type="email" name="email" value="{{ instructor.email }}" required><br><br>
+
+  <label>Phone:</label><br>
+  <input type="text" name="phone" value="{{ instructor.phone }}"><br><br>
+
+  <button type="submit">Update Instructor</button>
+</form>
+
+{% if messages %}
+  <ul>
+    {% for message in messages %}
+      <li>{{ message }}</li>
+    {% endfor %}
+  </ul>
+{% endif %}
+
+<a href="{% url 'instructor_list' %}">Back to List</a>
+{% endblock %}

@@ -1,0 +1,16 @@
+<h2>{{ student|default:"Add" }} Student</h2>
+<form method="post">
+{% csrf_token %}
+<input type="text" name="full_name" value="{{ student.full_name }}" placeholder="Full Name" required><br>
+<input type="email" name="email" value="{{ student.email }}" placeholder="Email" required><br>
+
+<select name="course">
+{% for c in courses %}
+<option value="{{ c.id }}" {% if student.course.id == c.id %}selected{% endif %}>
+    {{ c.name }}
+</option>
+{% endfor %}
+</select><br>
+
+<button type="submit">Save</button>
+</form>
